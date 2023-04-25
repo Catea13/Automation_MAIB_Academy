@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Shopping card">
+    <test verbose="2" preserve-order="true" name="/Users/developer/IdeaProjects/Automation_MAIB_Academy/src/main/java/Tests">
+        <classes>
+            <class name="Tests.LoginTest">
+                <methods>
+                    <include name="simpleLogin"/>
+                </methods>
+            </class>
+            <class name="Tests.AddProductInShoppingCard">
+                <methods>
+                    <include name="addToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
