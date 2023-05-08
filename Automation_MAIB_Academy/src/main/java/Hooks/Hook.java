@@ -1,6 +1,11 @@
 package Hooks;
 
 
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.en.And;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -43,7 +48,8 @@ public class Hook {
     }
 
     // @BeforeSuite
-    @BeforeMethod
+//   @Before
+   @BeforeMethod
     /**pattern singleton*/
     public String getDriverPath() {
         String browser = properties.getProperty("browser");
@@ -63,7 +69,16 @@ public class Hook {
 
     }
 
-    @AfterMethod
+    public void setup() {
+      String browser = getDriverPath();
+
+     getDriverPath();
+
+        }
+
+
+//@After
+ @AfterMethod
     public void close() {
         driver.quit();
 

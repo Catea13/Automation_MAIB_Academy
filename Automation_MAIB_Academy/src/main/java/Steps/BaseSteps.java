@@ -1,5 +1,6 @@
 package Steps;
 
+import Hooks.TestContext;
 import Pages.LoginPage;
 import Pages.SwagLabsPage;
 import io.cucumber.java.en.And;
@@ -12,24 +13,28 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 public class BaseSteps {
-    protected WebDriver driver = new ChromeDriver();
 
-    @Given("open the site")
-    public void openTheSite() {
-        driver.get("http://saucedemo.com/");
+
+//    @Given("open the site")
+//    public void openTheSite() {
+//        driver.get("http://saucedemo.com/");
+//    }
+
+    private TestContext testContext;
+
+    public BaseSteps(TestContext testContext) {
+        this.testContext = testContext;
     }
 
     @When("fill in Name with {string}")
     public void fillInWith(String value) {
-        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+        LoginPage loginPage = PageFactory.initElements(testContext.getHook().driver, LoginPage.class);
         loginPage.typeInUserNameField(value);
-
-
     }
 
     @When("fill in {string} with {string}")
     public void fillInWith(String field, String value) {
-        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+        LoginPage loginPage = PageFactory.initElements(testContext.getHook().driver, LoginPage.class);
         switch (field) {
             case "Name":
                 loginPage.userNameField.sendKeys(value);
@@ -46,7 +51,7 @@ public class BaseSteps {
 
     @And("click  {string} button")
     public void clickButton(String button) {
-        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+        LoginPage loginPage = PageFactory.initElements(testContext.getHook().driver, LoginPage.class);
         switch (button) {
             case "Login":
                 loginPage.clickLoginButton();
@@ -60,7 +65,7 @@ public class BaseSteps {
 
     @Then("appear next text {string}")
     public void appearNextText(String text) {
-        Assert.assertTrue(driver.getPageSource().contains(text));
+        Assert.assertTrue(testContext.getHook().driver.getPageSource().contains(text));
     }
 }
 
