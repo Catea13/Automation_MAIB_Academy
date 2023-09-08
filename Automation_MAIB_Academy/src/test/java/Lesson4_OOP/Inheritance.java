@@ -15,6 +15,7 @@ public class Inheritance extends Employee {
         Employee test2=new Employee("Test1","QA Manual",400000);
         Employee tes3=new Employee("Test1","Java Developer",500000);
         test1.setSalary(60000000);
+        System.out.println(test1.jobName);
         System.out.println(test1.getName().concat(test1.getJobName()).concat(String.valueOf(test1.getSalary())));
 
     }

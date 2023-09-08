@@ -10,13 +10,20 @@ public  class Modifiers {
         System.out.println(modifiers.a);
         System.out.println(modifiers.b);
         System.out.println(modifiers.d);
+        modifiers.d=9;
+        System.out.println(modifiers.d);
+
 
     }
-        final int a = 5;
+     final    int a = 5;
         public int d=7;
+
         private int b = 5;
 
-        // a=6;//will generate an error: we cannot change a final variable
+    public int getB() {
+        return b;
+    }
+// a=6;//will generate an error: we cannot change a final variable
 
     }
 //Inner class
@@ -26,6 +33,7 @@ public  class Modifiers {
         Modifiers modifiers=new Modifiers();
              System.out.println(modifiers.a);
              System.out.println(modifiers.d);
+             System.out.println(modifiers.getB());
              // private variables can only be accessed within the same class
 
          }
