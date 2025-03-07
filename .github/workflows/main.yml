@@ -17,4 +17,6 @@ jobs:
           java-version: '11'
 
       - name: Run Cucumber tests with Maven
-        run: mvn test
+        run: |
+          cd Automation_MAIB_Academy
+          mvn test
